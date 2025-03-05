@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас</title>
-    <link rel="stylesheet" href="О нас.css">
+    <title>Цены</title>
+    <link rel="stylesheet" href="Price.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
- 
-    <h1>О нас</h1>
-    
+    <header>
+        <nav>
+            <div class="logo">ПромТехСервис</div>
+            <ul class="nav-links">
+                <li><a href="main.html">Главная</a></li>
+                <li><a href="Price.html">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="price-list">
         <h2>Наши услуги и цены</h2>
         <div class="price-container">
@@ -46,6 +55,28 @@
             </div>
         </div>
     </div>
-    
+
+    <div class="cta-section">
+        <a href="#contact" class="cta-button">Связаться с нами</a>
+    </div>
+
+    <div class="page-navigation">
+        <a href="main.html" class="nav-button prev">
+            <i class="fas fa-arrow-left"></i> Главная
+        </a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info" id="contact">
+                <h4>Контакты</h4>
+                <p><i class="fas fa-phone"></i>Телефон: +7 ............</p>
+                <p><i class="fas fa-envelope"></i>Почта: </p>
+                <p><i class="fas fa-map-marker-alt"></i>Адрес: Ярославль</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Price.js"></script>
 </body>
 </html>
