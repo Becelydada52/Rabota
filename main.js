@@ -37,3 +37,15 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('a[href="#price"]');
+    if (target) {
+        e.preventDefault();
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease';
+        
+        setTimeout(() => {
+            window.location.href = 'price.html';
+        }, 300);
+    }
+});
