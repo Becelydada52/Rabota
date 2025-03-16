@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+
 document.addEventListener('click', function(e) {
     const target = e.target.closest('a[href="#price"]');
     if (target) {
@@ -48,4 +49,31 @@ document.addEventListener('click', function(e) {
             window.location.href = 'price.html';
         }, 300);
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Обработчик клика по кнопке меню
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Закрытие меню при клике по ссылке
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Закрытие меню при клике вне его области
+    document.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            menuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
 });

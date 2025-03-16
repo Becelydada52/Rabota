@@ -53,21 +53,6 @@ nav {
     text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #3498db;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
 .hero {
     height: 80vh;
     display: flex;
@@ -87,11 +72,6 @@ nav {
     animation: fadeIn 1s ease-out;
 }
 
-.hero p {
-    animation: fadeIn 1s ease-out 0.3s forwards;
-    opacity: 0;
-}
-
 .cta-button {
     padding: 1rem 2rem;
     font-size: 1.2rem;
@@ -103,45 +83,6 @@ nav {
     transition: background-color 0.3s;
     animation: fadeIn 1s ease-out 0.6s forwards;
     opacity: 0;
-}
-
-.cta-button:hover {
-    background-color: #0056b3;
-}
-
-.services {
-    padding: 5rem 10%;
-}
-
-.services h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.service-card {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    text-align: center;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.3s ease-out;
-}
-
-.service-card.visible {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 footer {
@@ -188,145 +129,118 @@ footer {
     transform: scale(1.2) rotate(360deg);
 }
 
-.contact-info p:nth-child(2) { animation-delay: 0.2s; }
-.contact-info p:nth-child(3) { animation-delay: 0.4s; }
-.contact-info p:nth-child(4) { animation-delay: 0.6s; }
+/* Адаптивность для всех устройств */
 
+/* Для больших экранов (десктопы) */
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .services {
+        padding: 5rem 15%;
+    }
+}
+
+/* Для планшетов */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .services {
+        padding: 3rem 5%;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Для мобильных устройств */
 @media (max-width: 768px) {
+    nav {
+        padding: 1rem 3%;
+    }
+    
     .nav-links {
-        display: none;
+        display: none; /* Скрыть навигацию на мобильных устройствах */
+    }
+    
+    .hero {
+        height: 60vh;
+        padding: 2rem;
     }
     
     .hero h1 {
         font-size: 2rem;
     }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
-/* Добавляем базовые анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Для маленьких мобильных устройств */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
 }
 
-@keyframes slideIn {
-    from { transform: translateX(-100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-links {
+        width: 85%;
+    }
 }
 
-/* Анимация для hero секции */
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: fadeIn 1s ease-out;
+/* Стили для мобильного меню */
+.menu-btn {
+    display: none; /* Скрыть кнопку меню по умолчанию */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1000;
 }
 
-.hero p {
-    animation: fadeIn 1s ease-out 0.3s forwards;
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 6px);
+}
+
+.menu-btn.active span:nth-child(2) {
     opacity: 0;
 }
 
-/* Анимация для карточек услуг */
-.service-card {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    text-align: center;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.3s ease-out;
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -6px);
 }
 
-.service-card.visible {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Анимация для навигации */
-.nav-links li {
-    margin-left: 2rem;
-    animation: slideIn 0.5s ease-out forwards;
-    opacity: 0;
-}
-
-.nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.nav-links li:nth-child(3) { animation-delay: 0.3s; }
-.nav-links li:nth-child(4) { animation-delay: 0.4s; }
-.nav-links li:nth-child(5) { animation-delay: 0.5s; }
-
-/* Анимация при наведении на карточки */
-.service-card {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    text-align: center;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Добавляем недостающие анимации */
-@keyframes slideInFromTop {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromBottom {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes logoSpin {
-    from { transform: rotateY(180deg); opacity: 0; }
-    to { transform: rotateY(0); opacity: 1; }
-}
-
-@keyframes slideInFromRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+@media (max-width: 768px) {
+    .menu-btn {
+        display: flex; /* Показать кнопку меню на мобильных устройствах */
     }
 }
