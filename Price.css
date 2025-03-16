@@ -1,102 +1,14 @@
-.price-list {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 0 20px;
-    animation: slideInFromTop 0.8s ease-out;
-}
-
-.price-list h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #333;
-    animation: fadeInScale 0.6s ease-out;
-}
-
-.price-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-    animation: fadeIn 1s ease-out;
-}
-
-.price-item {
-    flex: 1;
-    min-width: 280px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
-    background: linear-gradient(145deg, #ffffff, #f5f5f5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0;
-}
-
-.price-item:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.price-item h3 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    animation: slideInFromLeft 0.5s ease-out;
-}
-
-.price {
-    font-size: 2em;
-    text-align: center;
-    color: #3498db;
-    margin: 20px 0;
-    font-weight: bold;
-    animation: pulsePrice 2s infinite;
-}
-
-.price-item ul {
-    list-style: none;
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.price-item ul li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    color: #666;
-    position: relative;
-    padding-left: 25px;
-    transition: all 0.3s ease;
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
 }
 
-.price-item ul li:hover {
-    transform: translateX(5px);
-    color: #3498db;
-}
-
-.price-item ul li:last-child {
-    border-bottom: none;
-}
-
-.price-item ul li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #3498db;
-    animation: checkmarkBounce 0.5s ease-out;
-}
-
-@media (max-width: 768px) {
-    .price-container {
-        flex-direction: column;
-    }
-    
-    .price-item {
-        width: 100%;
-    }
-}
-
-/* Добавляем стили для навигации */
 nav {
     display: flex;
     justify-content: space-between;
@@ -129,14 +41,11 @@ nav {
     animation-fill-mode: both;
 }
 
-.nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.nav-links li:nth-child(3) { animation-delay: 0.3s; }
-
 .nav-links a {
     color: white;
     text-decoration: none;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .nav-links a:hover {
@@ -144,166 +53,38 @@ nav {
     text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
-/* Добавляем секцию CTA */
-.cta-section {
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin: 50px 0;
-    padding: 20px;
-    animation: fadeInScale 0.8s ease-out;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('industrial-bg.jpg');
+    background-size: cover;
+    color: black;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-out;
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #3498db;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #007bff;
     color: white;
-    text-decoration: none;
+    border: none;
     border-radius: 5px;
-    transition: all 0.4s ease;
-    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    animation: fadeIn 1s ease-out 0.6s forwards;
+    opacity: 0;
 }
 
-.cta-button:hover {
-    background-color: #2980b9;
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-}
-
-/* Добавляем анимации */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInFromTop {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes pulsePrice {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-@keyframes checkmarkBounce {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-@keyframes buttonPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(52, 152, 219, 0.4); }
-    100% { transform: scale(1); }
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes logoSpin {
-    from { transform: rotateY(180deg); opacity: 0; }
-    to { transform: rotateY(0); opacity: 1; }
-}
-
-.price-item:nth-child(1) { animation-delay: 0.2s; }
-.price-item:nth-child(2) { animation-delay: 0.4s; }
-.price-item:nth-child(3) { animation-delay: 0.6s; }
-
-/* Стили для навигации между страницами */
-.page-navigation {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 0 20px;
-    animation: fadeIn 0.8s ease-out;
-}
-
-.nav-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 24px;
-    background: linear-gradient(145deg, #3498db, #2980b9);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: all 0.4s ease;
-    font-weight: 500;
-    margin-left: 20px;
-    margin-top: 10px;
-    animation: fadeInScale 0.6s ease-out;
-}
-
-.nav-button:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
-    background: linear-gradient(145deg, #2980b9, #3498db);
-}
-
-.nav-button i {
-    margin: 0 8px;
-    transition: transform 0.3s ease;
-}
-
-.nav-button:hover i {
-    transform: translateX(5px);
-}
-
-/* Стили для футера */
 footer {
     background-color: #1a1a1a;
     color: white;
@@ -339,10 +120,6 @@ footer {
     animation-fill-mode: both;
 }
 
-.contact-info p:nth-child(2) { animation-delay: 0.2s; }
-.contact-info p:nth-child(3) { animation-delay: 0.4s; }
-.contact-info p:nth-child(4) { animation-delay: 0.6s; }
-
 .contact-info i {
     color: #3498db;
     transition: transform 0.3s ease;
@@ -352,63 +129,118 @@ footer {
     transform: scale(1.2) rotate(360deg);
 }
 
-/* Анимация перехода страниц */
-@keyframes pageTransition {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* Адаптивность для всех устройств */
 
-@keyframes slideInFromBottom {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-body {
-    animation: pageTransition 0.6s ease-out;
-}
-
-/* Улучшенные hover эффекты для навигации */
-.nav-links a {
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #3498db;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .page-navigation {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
+/* Для больших экранов (десктопы) */
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 4rem;
     }
     
-    .nav-button {
-        width: 80%;
-        justify-content: center;
+    .services {
+        padding: 5rem 15%;
+    }
+}
+
+/* Для планшетов */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .services {
+        padding: 3rem 5%;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem 3%;
+    }
+    
+    .nav-links {
+        display: none; /* Скрыть навигацию на мобильных устройствах */
+    }
+    
+    .hero {
+        height: 60vh;
+        padding: 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Для маленьких мобильных устройств */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-links {
+        width: 85%;
+    }
+}
+
+/* Стили для мобильного меню */
+.menu-btn {
+    display: none; /* Скрыть кнопку меню по умолчанию */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 6px);
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -6px);
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: flex; /* Показать кнопку меню на мобильных устройствах */
     }
 }
