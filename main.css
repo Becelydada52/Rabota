@@ -7,6 +7,19 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
+    color: #333;
+    animation: pageTransition 0.6s ease-out;
+}
+
+@keyframes pageTransition {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 nav {
@@ -25,7 +38,9 @@ nav {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    animation: logoSpin 0.8s ease-out;
+    animation: 
+        logoSpin 0.8s ease-out,
+        floating 3s ease-in-out infinite;
 }
 
 .nav-links {
@@ -37,20 +52,74 @@ nav {
 
 .nav-links li {
     margin-left: 2rem;
-    animation: slideInFromRight 0.5s ease-out;
-    animation-fill-mode: both;
+    animation: slideInFromRight 0.5s ease-out forwards;
+    opacity: 0;
 }
+
+.nav-links li:nth-child(1) { animation-delay: 0.2s; }
+.nav-links li:nth-child(2) { animation-delay: 0.4s; }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
     color: #3498db;
     text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    transform-origin: center;
+}
+
+.menu-btn:hover span {
+    background-color: #3498db;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .hero {
@@ -60,36 +129,78 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('industrial-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('industrial-bg.jpg');
     background-size: cover;
-    color: black;
+    background-position: center;
+    color: white;
     padding: 0 1rem;
+    animation: fadeIn 1s ease-out;
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    animation: fadeIn 1s ease-out;
+    opacity: 0;
+    animation: 
+        fadeIn 1s ease-out 0.5s forwards,
+        glowEffect 3s infinite;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.7s forwards;
 }
 
 .cta-button {
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: #007bff;
+    background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    animation: fadeIn 1s ease-out 0.6s forwards;
+    transition: all 0.4s ease;
     opacity: 0;
+    animation: fadeIn 1s ease-out 0.9s forwards;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
+}
+
+.cta-button.pulse {
+    animation: 
+        fadeIn 1s ease-out 0.9s forwards,
+        pulseEffect 2s infinite 2s;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 100%;
 }
 
 footer {
     background-color: #1a1a1a;
     color: white;
     padding: 3rem 5%;
-    margin-top: 50px;
     animation: slideInFromBottom 0.8s ease-out;
 }
 
@@ -100,7 +211,6 @@ footer {
 
 .contact-info {
     text-align: center;
-    animation: fadeIn 1s ease-out;
 }
 
 .contact-info h4 {
@@ -116,131 +226,163 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    animation: fadeInUp 0.6s ease-out;
-    animation-fill-mode: both;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
+
+.contact-info p:nth-child(2) { animation-delay: 0.2s; }
+.contact-info p:nth-child(3) { animation-delay: 0.4s; }
+.contact-info p:nth-child(4) { animation-delay: 0.6s; }
 
 .contact-info i {
     color: #3498db;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 .contact-info p:hover i {
     transform: scale(1.2) rotate(360deg);
 }
 
-/* Адаптивность для всех устройств */
-
-/* Для больших экранов (десктопы) */
-@media (min-width: 1200px) {
-    .hero h1 {
-        font-size: 4rem;
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    
-    .services {
-        padding: 5rem 15%;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Для планшетов */
-@media (max-width: 1024px) {
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes logoSpin {
+    from {
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes glowEffect {
+    0% { text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(52, 152, 219, 0.8); }
+    100% { text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+}
+
+@keyframes pulseEffect {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 1;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
-    .services {
-        padding: 3rem 5%;
-    }
-    
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+    .hero p {
+        font-size: 1rem;
     }
 }
 
-/* Для мобильных устройств */
-@media (max-width: 768px) {
-    nav {
-        padding: 1rem 3%;
-    }
-    
-    .nav-links {
-        display: none; /* Скрыть навигацию на мобильных устройствах */
-    }
-    
-    .hero {
-        height: 60vh;
-        padding: 2rem;
-    }
-    
+@media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
     }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
 
-/* Для маленьких мобильных устройств */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    
-    .logo {
-        font-size: 1.2rem;
-    }
-    
-    .contact-info p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Для очень маленьких экранов */
-@media (max-width: 320px) {
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-    
-    .nav-links {
-        width: 85%;
-    }
-}
-
-/* Стили для мобильного меню */
-.menu-btn {
-    display: none; /* Скрыть кнопку меню по умолчанию */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.menu-btn span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    transition: all 0.3s ease;
-}
-
-.menu-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 6px);
-}
-
-.menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -6px);
-}
-
-@media (max-width: 768px) {
-    .menu-btn {
-        display: flex; /* Показать кнопку меню на мобильных устройствах */
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }

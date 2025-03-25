@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Существующий код
-    // ... existing code ...
-
     // Плавный переход между страницами
     document.querySelectorAll('a[href^="main"], a[href^="price"]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -13,6 +10,32 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 window.location.href = href;
+            }, 300);
+        });
+    });
+
+    // Плавная прокрутка к контактам с анимацией
+    document.querySelectorAll('.nav-links a[href="#contact"], .cta-button[href="#contact"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Затемнение страницы перед прокруткой
+            document.body.style.opacity = '0.5';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                const contactSection = document.querySelector('#contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Возвращаем прозрачность после прокрутки
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 500);
             }, 300);
         });
     });
