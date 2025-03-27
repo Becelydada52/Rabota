@@ -3,6 +3,13 @@ import os
 from urllib.parse import parse_qs, urlparse
 
 class RequestHandler(SimpleHTTPRequestHandler):
+    def end_headers(self):
+        if self.path.endswith('.css'):
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        super().end_headers()
+
+
+class RequestHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         
         if self.path.startswith('/static/') or \
