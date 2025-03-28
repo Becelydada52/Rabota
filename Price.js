@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+        // Меню для мобильных устройств
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+    
+        menuBtn.addEventListener('click', function() {
+            menuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
     // Плавный переход между страницами
     document.querySelectorAll('a[href^="main"], a[href^="price"]').forEach(link => {
         link.addEventListener('click', function(e) {

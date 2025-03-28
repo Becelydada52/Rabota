@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПромТехСервис - Промышленные решения</title>
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="/price">Цены</a></li>
+                <li><a href="{{ url_for('price') }}" method="POST">Цены</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
         </nav>
@@ -39,6 +40,6 @@
         </div>
     </footer>
 
-    <script src="/main.js"></script>
+
 </body>
 </html>
