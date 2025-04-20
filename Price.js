@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 navLinks.classList.remove('active');
             });
         });
+
     // Плавный переход между страницами
     document.querySelectorAll('a[href^="main"], a[href^="price"]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -28,6 +29,29 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 window.location.href = href;
             }, 300);
+        });
+    });
+
+    // Переходы на страницы с ценами
+    document.querySelectorAll('.price-item button').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.id;
+            let href = '';
+            if (id === '1') {
+                href = 'price1.html';
+            } else if (id === '2') {
+                href = 'price2.html';
+            } else if (id === '3') {
+                href = 'price3.html';
+            }
+            if (href) {
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.3s ease';
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            }
         });
     });
 

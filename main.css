@@ -41,9 +41,6 @@ nav {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    animation: 
-        logoSpin 0.8s ease-out,
-        floating 3s ease-in-out infinite;
 }
 
 .nav-links {
