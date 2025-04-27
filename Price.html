@@ -18,7 +18,7 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="{{ url_for('main') }}" method="POST">Цены</a></li>
+                <li><a href="{{ url_for('main') }}" method="POST">Главная</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
         </nav>
@@ -35,7 +35,7 @@
                     <li>Базовая диагностика</li>
                     <li>Техническая поддержка</li>
                 </ul>
-                <button id="1">Подробнее</button>
+                <a href="{{ url_for('price1') }}" method="POST">Подробнее</a>
             </div>
             
             <div class="price-item">
@@ -47,7 +47,7 @@
                     <li>Оптимизация процессов</li>
                     <li>Ежемесячный отчет</li>
                 </ul>
-                <button id="2">Подробнее</button>
+                <a href="{{ url_for('price2') }}" method="POST">Подробнее</a>
             </div>
             
             <div class="price-item">
@@ -59,7 +59,7 @@
                     <li>Индивидуальные решения</li>
                     <li>Ежеквартальный аудит</li>
                 </ul>
-                <button id="3">Подробнее</button>
+                <a href="{{ url_for('price3') }}" method="POST">Подробнее</a>
             </div>
         </div>
     </div>
