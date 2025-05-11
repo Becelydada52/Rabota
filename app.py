@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.template_folder = os.path.join(os.path.dirname(__file__), 'templates')
 app.static_folder = os.path.join(os.path.dirname(__file__), 'static')
 
-BOT_TOKEN = '7916793584:AAGGsNaSo4gAzfUsJ9HhwKg3jDaw-z43WHw'
-CHAT_ID = 798039063
+BOT_TOKEN = ''
+CHAT_ID = 
 
 
 bot = Bot(token=BOT_TOKEN)
